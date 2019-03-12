@@ -15,7 +15,7 @@ class GoogleAuth extends Component {
             }).then(()=>{
                 //on giving the configurations above, we get some callback object
                 this.auth = window.gapi.auth2.getAuthInstance();
-                //this.auth is defined above line 
+                //this.auth is defined above line ..
                 this.onAuthChange(this.auth.isSignedIn.get())
                 //listening for any change on oath signin/signout feature
                 this.auth.isSignedIn.listen(this.onAuthChange)
