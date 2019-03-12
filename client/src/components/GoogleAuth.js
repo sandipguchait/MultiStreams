@@ -25,7 +25,7 @@ class GoogleAuth extends Component {
     //this renders the authentication state to update as a realtime basis
     onAuthChange = (isSignedIn) => {
         if(isSignedIn) {
-            //calling signin() eom connect() below
+            //calling signin() from connect() below
             this.props.signIn();
         } else {
             this.props.signOut()
