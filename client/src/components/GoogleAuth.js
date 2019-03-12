@@ -5,10 +5,6 @@ import { signIn, signOut } from '../actions/index'
 
 class GoogleAuth extends Component {
 
-    // initial state to hold sign in value
-    state = {
-        isSignedIn: null
-    }
 
     // when ever page renders the client connects with the google OAuth feature
     componentDidMount() {
@@ -19,7 +15,8 @@ class GoogleAuth extends Component {
             }).then(()=>{
                 //on giving the configurations above, we get some callback object
                 this.auth = window.gapi.auth2.getAuthInstance();
-                this.setState({ isSignedIn: this.auth.isSignedIn.get()})
+                //this.auth is defined above line 
+                this.onAuthChange(this.auth.isSignedIn.get())
                 //listening for any change on oath signin/signout feature
                 this.auth.isSignedIn.listen(this.onAuthChange)
             })
@@ -43,9 +40,9 @@ class GoogleAuth extends Component {
     }
     // renders the UI with display of buttons
     renderAuthButton = () => {
-        if(this.state.isSignedIn === null ) {
+        if(this.props.isSignedIn === null ) {
             return null
-        } else if (this.state.isSignedIn ) {
+        } else if (this.props.isSignedIn ) {
             return (
                 <button onClick={()=> this.onSignOutClick()} className=" ui red google button">
                     <i className="google icon"/>
@@ -70,4 +67,11 @@ class GoogleAuth extends Component {
     }
 }
 
-export default connect(null, { signIn, signOut })(GoogleAuth);
+const mapStateToProps = ( state ) => {
+    return {
+        isSignedIn: state.auth.isSignedIn
+    }
+}
+
+
+export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth);
