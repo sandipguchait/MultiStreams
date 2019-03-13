@@ -4,9 +4,14 @@ import App from './components/App';
 import reducers from './reducers';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-const store = createStore(reducers);
+//for redux dev tools
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
+const store = createStore ( 
+    reducers,
+    composeEnhancers(applyMiddleware())
+ );
 
 ReactDOM.render(
     <Provider store={store}>
