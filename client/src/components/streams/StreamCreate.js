@@ -6,8 +6,10 @@ class StreamCreate extends Component {
   // Rendering form data from redux-form
   // input props is provided by redux-form
   renderInput = ({ input, label, meta }) => {
+      //showing classname of error conditionally
+      const className = `field ${meta.error && meta.touched ? 'error': ''}`
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} />
         {/* meta is the validate error property that we get from redux from validate function below */}
@@ -41,7 +43,7 @@ class StreamCreate extends Component {
       //this.onSubmit() is the helper function
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form"
+        className="ui form error"
       >
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
