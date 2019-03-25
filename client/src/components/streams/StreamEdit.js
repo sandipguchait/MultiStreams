@@ -21,6 +21,7 @@ class StreamEdit extends React.Component {
         <div>
             <h3>Edit a Stream</h3>
             <StreamForm initialValues={this.props.stream} onSubmit={this.onSubmit}/>
+            {/* redux form has predefined method called initialValues so passing the value as props */}
         </div>
     );
    }
