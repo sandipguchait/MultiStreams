@@ -12,6 +12,7 @@ class StreamList extends React.Component {
     }
 
     renderButtons = stream => {
+        //checking if the user Id on the stream is = userid that is logged in 
         if(stream.userId === this.props.currentUserId) {
             return (
                 <div className="right floated content" >
@@ -40,6 +41,7 @@ class StreamList extends React.Component {
     }
 
     renderCreateStreamButton = () => {
+        // checking if user is signed In or not 
         if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right'}}>
