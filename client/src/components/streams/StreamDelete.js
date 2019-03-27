@@ -4,6 +4,8 @@ import history from '../../history';
 import { connect } from 'react-redux';
 import { fetchStream } from '../../actions/index';
 
+import { Link } from 'react-router-dom';
+
 class StreamDelete extends React.Component {
     
     componentDidMount() {
@@ -14,7 +16,7 @@ class StreamDelete extends React.Component {
         return (
             <>
                 <button className="ui button negative">Delete</button>
-                <button className="ui button">Cancel</button>
+                <Link className="ui button">Cancel</Link>
             </>
         )
     }
