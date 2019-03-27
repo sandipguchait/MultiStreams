@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
+// Creating a React portal to crearte a Modal
 const Modal = (props) => {
     return (
         ReactDOM.createPortal(
