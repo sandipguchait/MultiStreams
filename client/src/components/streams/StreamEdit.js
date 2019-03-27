@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {fetchStream, editStream } from '../../actions/index';
 import StreamForm from './StreamForm';
 
+import _ from "lodash";
+
 class StreamEdit extends React.Component {
 
     componentDidMount(){
@@ -20,8 +22,12 @@ class StreamEdit extends React.Component {
     return (
         <div>
             <h3>Edit a Stream</h3>
-            <StreamForm initialValues={this.props.stream} onSubmit={this.onSubmit}/>
-            {/* redux form has predefined method called initialValues so passing the value as props */}
+            <StreamForm 
+             initialValues={_.pick(this.props.stream, 'title', 'description')}
+            //  initialValues is prefefined by reduxform and we use lodash here to pick 
+            //  the only properties that we want like title and desc
+             onSubmit={this.onSubmit}
+             />
         </div>
     );
    }
